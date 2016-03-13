@@ -4,7 +4,7 @@ PODS:
 
 DEPENDENCIES:
   - OpenTok (~> 2.7)
-  - SnapKit
+  - SnapKit (~> 0.19)
 
 SPEC CHECKSUMS:
   OpenTok: 990aade2dcea4ab90d26410efa2f96755e295051
