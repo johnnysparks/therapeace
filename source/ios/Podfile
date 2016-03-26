@@ -1,0 +1,10 @@
+platform :ios, '8.0'
+use_frameworks!
+
+pod 'OpenTok', '~> 2.7'
+pod 'SnapKit', '~> 0.19'
+
+target 'UnitTests' do
+  pod 'Quick', '~> 0.9.0'
+  pod 'Nimble', '3.0.0'
+end

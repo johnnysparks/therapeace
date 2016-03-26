@@ -1,0 +1,48 @@
+const fs = require("fs")
+const exec = require('child_process').exec;
+
+
+//
+// Jake Tasks
+//   Run "jake" from the command line to get started
+//
+task("default", infoTask)
+
+desc("This is an introduction to therapeace development")
+task("info", infoTask)
+
+desc("Prepare the system for development deployment")
+task("setup", setupTask)
+
+
+function infoTask() {
+   log(cat('README.md'))
+   exec('jake -T --jakefile source/scripts/setup/Jakefile', logExec)
+}
+
+function setupTask() {
+  log("Starting webserver on port: 3000")
+  exec('(cd ./api/ && DEBUG=express:* npm start)', logExec)
+
+  log("Starting video services on: ")
+  exec('(cd ./api/ && DEBUG=express:* npm start)', logExec)
+}
+
+// Helpers
+function log() {
+  console.log.apply(console, arguments)
+}
+
+function logExec(error, stdout, sterror) {
+  log(error);
+  log(stdout);
+  log(sterror);
+}
+
+function cat(path) {
+  if(fs.realpathSync(path)){
+    return String(fs.readFileSync(path))
+  } else {
+    return ""
+  }
+}
