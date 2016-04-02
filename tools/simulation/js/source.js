@@ -107,7 +107,7 @@ class BusinessSimulation {
       date = new Date(start.getTime() + day * MS_PER_DAY )
       this.simulateDay(date)
     }
-    
+
     return [
         `Total transactions: ${this.transactionHistory.transactions.length}`,
         `Total customers: ${this.customerPool.customers.length}`,
@@ -194,7 +194,7 @@ class Transaction extends Event {
     return this.item
   }
 }
-
+if (typeof module !== "undefined"){
 module.exports = {
   Calc: Calc,
   Event: Event,
@@ -205,4 +205,5 @@ module.exports = {
   BusinessSimulation: BusinessSimulation,
   StoreFront: StoreFront,
   Assumptions: Assumptions,
+}
 }
