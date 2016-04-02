@@ -1,0 +1,13 @@
+{
+  "name": "simulation",
+  "version": "1.0.0",
+  "description": "Tool for exploring different finantial situations",
+  "main": "js/run.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "start" : "node --use_strict js/run.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
