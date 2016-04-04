@@ -48,7 +48,7 @@ class StoreFront {
 
     // add a few new Transactions to the mix based on expected customer behavior
     let numTransactions = Calc.wholeCount( this.customerPool.customers.length * dailyOrdersPerCustomer )
-    let transactions = Calc.make(10, () => { return this.randomOrder(date) })
+    let transactions = Calc.make(numTransactions, () => { return this.randomOrder(date) })
     return transactions
   }
 }
@@ -128,6 +128,10 @@ class TransactionHistory {
     this.transactions = transactions || []
   }
 
+  addTransaction(transaction){
+    this.transactions.push(transaction)
+  }
+
   addTransactions(transactions){
     this.transactions = this.transactions.concat(transactions)
   }
@@ -150,6 +154,23 @@ class TransactionHistory {
       }
       return total
     }, 0)
+  }
+
+  intervalsOf(days){
+    var intervals = {}
+    this.transactions.forEach((t) => {
+      let day = Math.floor(t.date.getTime() / MS_PER_DAY / days)
+      if(!intervals[day]) {
+        intervals[day] = new TransactionHistory([t])
+      } else {
+        intervals[day].addTransaction(t)
+      }
+    })
+    var res = []
+    for (var i in intervals){
+      res.push(intervals[i])
+    }
+    return res
   }
 
   from(start, end){

@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "description": "Tool for exploring different finantial situations",
   "main": "js/run.js",
-  "dependencies": {},
+  "dependencies": {
+    "sql.js": "0.3.2"
+  },
   "devDependencies": {},
   "scripts": {
-    "start" : "node --use_strict js/run.js"
+    "start": "node --use_strict js/run.js"
   },
   "author": "",
   "license": "ISC"
